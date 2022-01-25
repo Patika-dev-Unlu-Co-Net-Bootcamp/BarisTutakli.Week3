@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\kbez1\\Documents\\kodlar\\Bootcamp\\BarisTutakli-Hafta2\\BarisTutakli.WebApi\\BarisTutakli.WebApi.csproj",
+  "FilePath": "c:\\Users\\kbez1\\Documents\\kodlar\\Bootcamp\\BarisTutakli.Week3\\BarisTutakli.WebApi\\WebApi.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -15616,7 +15616,7 @@
     ],
     "CSharpLanguageVersion": 900
   },
-  "RootNamespace": "BarisTutakli.WebApi",
+  "RootNamespace": "WebApi",
   "Documents": [],
   "SerializationFormat": "0.2"
 }
