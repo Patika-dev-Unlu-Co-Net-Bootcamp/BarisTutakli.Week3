@@ -3,6 +3,7 @@ namespace BarisTutakli.WebApi
     using BarisTutakli.WebApi.Common.Abstract;
     using BarisTutakli.WebApi.DbOperations;
     using BarisTutakli.WebApi.Services;
+    using global::WebApi.Services;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
@@ -26,8 +27,9 @@ namespace BarisTutakli.WebApi
                 var services = scope.ServiceProvider;
                 Printer.Initialize(services);
             }
-            
+         
 
+            
             host.Run();
         }
 

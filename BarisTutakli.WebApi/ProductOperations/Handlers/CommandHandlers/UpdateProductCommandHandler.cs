@@ -13,6 +13,7 @@ namespace WebApi.ProductOperations.Handlers.CommandHandlers
         private readonly BaseUpdateRepository<Product, ECommerceDbContext> _baseUpdateRepository;
         public int ProductId { get; set; }
         public UpdateProductCommandRequest Model { get; set; }
+     
         public UpdateProductCommandHandler(
             BaseUpdateRepository<Product, ECommerceDbContext> baseUpdateRepository,
             BaseReadRepository<Product, ECommerceDbContext> baseReadRepository
@@ -22,8 +23,9 @@ namespace WebApi.ProductOperations.Handlers.CommandHandlers
             _baseReadRepository = baseReadRepository;
         }
 
-        public UpdateProductCommandResponse Handle()
+        public UpdateProductCommandResponse Handle(UpdateProductCommandRequest model)
         {
+            Model = model;
             var product = _baseReadRepository.Get(p => p.Id == ProductId);
 
             if (product is not null)
@@ -39,7 +41,10 @@ namespace WebApi.ProductOperations.Handlers.CommandHandlers
                 {
                      Id=ProductId,
                     IsSuccess = true,
-                    ModifiedDate= product.ModifiedDate
+                    ModifiedDate= product.ModifiedDate,
+                    
+                    
+                    
                 };
             }
             return new UpdateProductCommandResponse

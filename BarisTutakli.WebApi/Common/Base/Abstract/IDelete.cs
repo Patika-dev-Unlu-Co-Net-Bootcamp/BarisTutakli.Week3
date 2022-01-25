@@ -5,6 +5,6 @@ namespace WebApi.Common.Base.Abstract
 {
     interface IDelete<TEntity> where TEntity : BaseEntity
     {
-        Task Delete(TEntity entity);
+        int Delete(TEntity entity);
     }
 }

@@ -1,9 +1,13 @@
 ﻿using BarisTutakli.WebApi.Common;
 using BarisTutakli.WebApi.DbOperations;
 using BarisTutakli.WebApi.Models.Concrete;
+using MediatR;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using WebApi.Common.Base.Concrete;
+using WebApi.ProductOperations.Queries.Request;
 using WebApi.ProductOperations.Queries.Response;
 
 namespace WebApi.ProductOperations.Handlers.QueryHandlers
@@ -15,9 +19,9 @@ namespace WebApi.ProductOperations.Handlers.QueryHandlers
         {
             _readAllRepository = baseReadAllRepository;
         }
-        public List<GetAllProductQueryResponse> Handle()
+        public  List<GetAllProductQueryResponse> Handle(GetAllProductQueryRequest request)
         {
-            var result = _readAllRepository.GetAll();
+            var  result = _readAllRepository.GetAll();
             if (result is null)
             {
                 throw new InvalidOperationException(Messages.NotFound);
@@ -41,5 +45,7 @@ namespace WebApi.ProductOperations.Handlers.QueryHandlers
 
 
         }
+
+      
     }
 }

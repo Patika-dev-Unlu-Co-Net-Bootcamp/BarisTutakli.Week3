@@ -15,10 +15,10 @@ namespace WebApi.Common.Base.Concrete
         {
             _dbcontext = context;
         }
-        public Task Delete(TEntity entity)
+        public int Delete(TEntity entity)
         {
             _dbcontext.Set<TEntity>().Remove(entity);
-            return _dbcontext.SaveChangesAsync();
+            return _dbcontext.SaveChanges();
         }
     }
 }

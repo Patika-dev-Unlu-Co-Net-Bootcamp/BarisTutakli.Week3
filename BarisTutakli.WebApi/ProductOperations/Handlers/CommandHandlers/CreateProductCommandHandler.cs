@@ -1,10 +1,8 @@
-﻿using BarisTutakli.WebApi.Common;
-using BarisTutakli.WebApi.Common.DataAccess;
-using BarisTutakli.WebApi.DbOperations;
+﻿using BarisTutakli.WebApi.DbOperations;
 using BarisTutakli.WebApi.Models.Concrete;
+using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using WebApi.Common.Base.Concrete;
 using WebApi.ProductOperations.Commands.Request;
@@ -18,14 +16,16 @@ namespace WebApi.ProductOperations.Handlers.CommandHandlers
 
         public CreateProductCommandRequest Model { get; set; }
         private readonly BaseCreateRepository<Product, ECommerceDbContext> _createRepository;
-       
+
         public CreateProductCommandHandler(BaseCreateRepository<Product, ECommerceDbContext> baseCreateRepository)
         {
             _createRepository = baseCreateRepository;
         }
-        public CreateProductCommandResponse Handle()
-        {
 
+
+        public CreateProductCommandResponse Handle(CreateProductCommandRequest request)
+        {
+            Model = request;
             var createdProductId = _createRepository.Create(new Product()
             {
                 CategoryId = Model.CategoryId,
@@ -37,11 +37,11 @@ namespace WebApi.ProductOperations.Handlers.CommandHandlers
             return createdProductId > 0 ? new CreateProductCommandResponse
             {
                 IsSuccess = true,
+                ProductId = createdProductId
             } : new CreateProductCommandResponse
             {
                 IsSuccess = false,
             };
-
         }
     }
 }

@@ -17,6 +17,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.ProductOperations.Handlers.CommandHandlers;
+using MediatR;
+using WebApi.ProductOperations.Handlers.QueryHandlers;
+using System.Reflection;
+using WebApi.Common.Base.Concrete;
+using BarisTutakli.WebApi.Models.Concrete;
+using WebApi.Common.Base.Abstract;
+using BarisTutakli.WebApi.Common.Entities;
+using WebApi.Services;
 
 namespace BarisTutakli.WebApi
 {
@@ -41,7 +50,15 @@ namespace BarisTutakli.WebApi
             services.AddDbContext<ECommerceDbContext>(options => options.UseInMemoryDatabase(databaseName: "ECommerceDb"));
             //services.AddSingleton<ILoggerService, ConsoleLogger>();
             services.AddSingleton<ILoggerService, DBLogger>();
-           
+
+
+            services.AddScoped<BaseReadAllRepository<Product, ECommerceDbContext>>();
+            services.AddScoped<GetProductsQueryHandler>();
+
+            // Register groups of services with extension methods
+            // IServiceCollection is extended by CustomMeditT class located in Services folder.
+            services.AddServices();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

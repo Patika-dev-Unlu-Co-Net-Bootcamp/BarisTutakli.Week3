@@ -9,14 +9,19 @@
     using FluentValidation;
     using global::WebApi.Common.Base.Concrete;
     using global::WebApi.ProductOperations.Commands.Request;
+    using global::WebApi.ProductOperations.Commands.Response;
     using global::WebApi.ProductOperations.Handlers.CommandHandlers;
     using global::WebApi.ProductOperations.Handlers.QueryHandlers;
     using global::WebApi.ProductOperations.Handlers.Validators;
+    using global::WebApi.ProductOperations.Queries.Request;
+    using global::WebApi.ProductOperations.Queries.Response;
+    using MediatR;
     using Microsoft.AspNetCore.Mvc;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Net;
+    using System.Threading;
 
     /// <summary>
     /// Defines the <see cref="ProductController" />.
@@ -25,13 +30,30 @@
     [ApiController]
     public class ProductController : ControllerBase
     {
-
+        //IMediator _mediator;
         private readonly ECommerceDbContext _context;
-
-        public ProductController(ECommerceDbContext context)
+        GetProductsQueryHandler _getProductsQueryHandler;
+        GetProductDetailQueryHandler _getProductDetailQueryHandler;
+        CreateProductCommandHandler _createProductCommandHandler;
+        DeleteProductCommandHandler _deleteProductCommandHandler;
+        UpdateProductCommandHandler _updateProductCommandHandler;
+        public ProductController(ECommerceDbContext context, 
+            GetProductsQueryHandler getProductsQueryHandler,
+            GetProductDetailQueryHandler getProductDetailQueryHandler,
+            CreateProductCommandHandler createProductCommandHandler,
+            DeleteProductCommandHandler deleteProductCommandHandler,
+            UpdateProductCommandHandler updateProductCommandHandler
+            )
         {
             _context = context;
+            _getProductsQueryHandler = getProductsQueryHandler;
+            _getProductDetailQueryHandler = getProductDetailQueryHandler;
+            _createProductCommandHandler = createProductCommandHandler;
+            _deleteProductCommandHandler = deleteProductCommandHandler;
+            _updateProductCommandHandler = updateProductCommandHandler;
         }
+
+
 
         /// <summary>
         /// Get all produtcs
@@ -41,10 +63,10 @@
         [HttpGet]
         public IActionResult Get()
         {
-            GetProductsQueryHandler command = new GetProductsQueryHandler(
-                new BaseReadAllRepository<Product, ECommerceDbContext>(_context));
-            var result = command.Handle();
-            return Ok(result);
+
+            GetAllProductQueryRequest query = new GetAllProductQueryRequest();        
+            List<GetAllProductQueryResponse> mtlist = _getProductsQueryHandler.Handle(query);
+            return Ok(mtlist);
         }
 
         /// <summary>
@@ -56,15 +78,12 @@
         [HttpGet("{id}")]
         public IActionResult GetProductById(int id)
         {
-            GetProductDetailQueryHandler queryHandler = new GetProductDetailQueryHandler(new BaseReadRepository<Product, ECommerceDbContext>(_context));
-            queryHandler.ProductId = id;
-           
-            var result = queryHandler.Handle();
-            if (result is not null)
-            {
-                return Ok(result);
-            }
-            return NoContent();// return 204 
+
+            GetByIdProductQueryRequest request = new GetByIdProductQueryRequest();
+            _getProductDetailQueryHandler.ProductId = id;
+            GetByIdProductQueryResponse productDetail = _getProductDetailQueryHandler.Handle(request);
+            return Ok(productDetail);
+            //return NoContent();// return 204 
         }
 
         /// <summary>
@@ -76,16 +95,8 @@
         [HttpPost()]
         public IActionResult Create([FromBody] CreateProductCommandRequest createProductCommandRequest)
         {
-            CreateProductCommandValidator validator = new CreateProductCommandValidator();
-            CreateProductCommandHandler command = new CreateProductCommandHandler(
-                new BaseCreateRepository<Product, ECommerceDbContext>(_context));
-
-            command.Model = createProductCommandRequest;
-            validator.ValidateAndThrow(command);
-            command.Handle();
-
-            // Return a message and the creation time of the product
-            string message = JsonConvert.SerializeObject(new { message = Messages.Added, time = DateTime.Now });
+            var result = _createProductCommandHandler.Handle(createProductCommandRequest);
+            string message = JsonConvert.SerializeObject(new {message=result.IsSuccess,Id=result.ProductId, time = DateTime.Now });
             return Created("Index", message);//201
         }
 
@@ -96,19 +107,11 @@
         /// <param name="updateProductModel">The updateProductModel<see cref="UpdateProductModel"/>.</param>
         /// <returns>The <see cref="IActionResult"/>.</returns>
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] UpdateProductCommandRequest updateProductCommandRequest)
+        public IActionResult Update(int id,[FromBody] UpdateProductCommandRequest updateProductCommandRequest)
         {
-            UpdateProductCommandHandler commandHandler = new UpdateProductCommandHandler(
-                new BaseUpdateRepository<Product, ECommerceDbContext>(_context),
-                new BaseReadRepository<Product, ECommerceDbContext>(_context));
-            UpdateProductCommandValidator validator = new UpdateProductCommandValidator();
-            commandHandler.ProductId = id;
-            commandHandler.Model = updateProductCommandRequest;
-            validator.ValidateAndThrow(commandHandler);
-
-            commandHandler.Handle();
-
-            return Ok();
+            _updateProductCommandHandler.ProductId = id;
+            var result = _updateProductCommandHandler.Handle(updateProductCommandRequest);
+            return Ok(result);
         }
 
         /// <summary>
@@ -120,19 +123,9 @@
         [HttpPatch("{id}")]
         public IActionResult UpdateProductCategory(int id, [FromBody] UpdateProductCommandRequest updateProductCommandRequest)
         {
-
-            UpdateProductCommandHandler commandHandler = new UpdateProductCommandHandler(
-                new BaseUpdateRepository<Product, ECommerceDbContext>(_context),
-                new BaseReadRepository<Product, ECommerceDbContext>(_context));
-            UpdateProductCommandValidator validator = new UpdateProductCommandValidator();
-
-            commandHandler.ProductId = id;
-            commandHandler.Model = updateProductCommandRequest;
-            validator.ValidateAndThrow(commandHandler);
-
-            commandHandler.Handle();
-
-            return Ok();
+            _updateProductCommandHandler.ProductId = id;
+            var result = _updateProductCommandHandler.Handle(updateProductCommandRequest);
+            return Ok(result);
         }
 
         /// <summary>
@@ -143,17 +136,9 @@
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-
-            DeleteProductCommandHandler command = new DeleteProductCommandHandler(
-            new BaseDeleteRepository<Product, ECommerceDbContext>(_context),
-            new BaseReadRepository<Product, ECommerceDbContext>(_context)
-            );
-            DeleteProductCommandValidator validator = new DeleteProductCommandValidator();
-            command.ProductId = id;
-            validator.ValidateAndThrow(command);
-            command.Handle();
-
-            return Ok();//200
+            _deleteProductCommandHandler.ProductId = id;
+            var result = _deleteProductCommandHandler.Handle();
+            return Ok(result);//200
         }
 
 

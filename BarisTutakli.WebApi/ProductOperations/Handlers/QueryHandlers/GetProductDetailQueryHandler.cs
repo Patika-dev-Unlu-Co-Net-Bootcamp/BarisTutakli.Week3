@@ -1,8 +1,12 @@
 ﻿using BarisTutakli.WebApi.Common;
 using BarisTutakli.WebApi.DbOperations;
 using BarisTutakli.WebApi.Models.Concrete;
+using MediatR;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using WebApi.Common.Base.Concrete;
+using WebApi.ProductOperations.Queries.Request;
 using WebApi.ProductOperations.Queries.Response;
 
 namespace WebApi.ProductOperations.Handlers.QueryHandlers
@@ -16,14 +20,14 @@ namespace WebApi.ProductOperations.Handlers.QueryHandlers
         {
             _readRepository = baseReadRepository;
         }
-        public GetByIdProductQueryResponse Handle()
+        public GetByIdProductQueryResponse Handle(GetByIdProductQueryRequest request)
         {
             var product = _readRepository.Get(p => p.Id == ProductId);
             if (product is null)
             {
                 throw new InvalidOperationException(Messages.NotFound);
             }
-            return new GetByIdProductQueryResponse
+            return  new GetByIdProductQueryResponse
             {
                 Id = ProductId,
                 Category = ((CategoryEnum)product.CategoryId).ToString(),
@@ -35,5 +39,7 @@ namespace WebApi.ProductOperations.Handlers.QueryHandlers
             };
          
         }
+
+   
     }
 }

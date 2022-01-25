@@ -1,6 +1,10 @@
 ﻿using BarisTutakli.WebApi.DbOperations;
 using BarisTutakli.WebApi.Models.Concrete;
+using MediatR;
+using System.Threading;
+using System.Threading.Tasks;
 using WebApi.Common.Base.Concrete;
+using WebApi.ProductOperations.Commands.Request;
 using WebApi.ProductOperations.Commands.Response;
 
 namespace WebApi.ProductOperations.Handlers.CommandHandlers
@@ -19,23 +23,25 @@ namespace WebApi.ProductOperations.Handlers.CommandHandlers
             _baseReadRepository = baseReadRepository;
         }
 
-        public DeleteProductCommandResponse Handle()
+        public  DeleteProductCommandResponse Handle()
         {
             var deletedProduct = _baseReadRepository.Get(p => p.Id == ProductId);
 
             if (deletedProduct is not null)
             {
-                _baseDeleteRepository.Delete(deletedProduct);
+                 _baseDeleteRepository.Delete(deletedProduct);
                 return new DeleteProductCommandResponse
                 {
                     IsSuccess = true,
                 };
             }
-            return new DeleteProductCommandResponse
+            return  new DeleteProductCommandResponse
             {
                 IsSuccess = false,
             };
 
         }
+
+       
     }
 }
