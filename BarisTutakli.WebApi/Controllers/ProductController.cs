@@ -1,27 +1,19 @@
 ﻿namespace BarisTutakli.WebApi.Controllers
 {
-    using BarisTutakli.WebApi.Common;
     using BarisTutakli.WebApi.DbOperations;
     using BarisTutakli.WebApi.Models.Concrete;
 
     using BarisTutakli.WebApi.ProductOperations.ListProducts;
-    using BarisTutakli.WebApi.ProductOperations.UpdateProduct;
-    using FluentValidation;
-    using global::WebApi.Common.Base.Concrete;
     using global::WebApi.ProductOperations.Commands.Request;
-    using global::WebApi.ProductOperations.Commands.Response;
     using global::WebApi.ProductOperations.Handlers.CommandHandlers;
     using global::WebApi.ProductOperations.Handlers.QueryHandlers;
-    using global::WebApi.ProductOperations.Handlers.Validators;
     using global::WebApi.ProductOperations.Queries.Request;
     using global::WebApi.ProductOperations.Queries.Response;
-    using MediatR;
     using Microsoft.AspNetCore.Mvc;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Net;
-    using System.Threading;
 
     /// <summary>
     /// Defines the <see cref="ProductController" />.
