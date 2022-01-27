@@ -19,7 +19,7 @@ namespace WebApi.ProductOperations.Handlers.QueryHandlers
         {
             _readAllRepository = baseReadAllRepository;
         }
-        public  List<GetAllProductQueryResponse> Handle(GetAllProductQueryRequest request)
+        public  List<GetAllProductQueryResponse> Handle()
         {
             var  result = _readAllRepository.GetAll();
             if (result is null)

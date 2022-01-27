@@ -20,7 +20,7 @@ namespace WebApi.ProductOperations.Handlers.QueryHandlers
         {
             _readRepository = baseReadRepository;
         }
-        public GetByIdProductQueryResponse Handle(GetByIdProductQueryRequest request)
+        public GetByIdProductQueryResponse Handle()
         {
             var product = _readRepository.Get(p => p.Id == ProductId);
             if (product is null)

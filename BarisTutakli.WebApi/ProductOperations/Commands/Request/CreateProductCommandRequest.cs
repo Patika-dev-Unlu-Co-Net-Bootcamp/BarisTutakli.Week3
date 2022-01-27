@@ -7,7 +7,7 @@ using WebApi.ProductOperations.Commands.Response;
 
 namespace WebApi.ProductOperations.Commands.Request
 {
-    public class CreateProductCommandRequest : IRequest<CreateProductCommandResponse>
+    public class CreateProductCommandRequest
     {
         public int CategoryId { get; set; }
         public string ProductName { get; set; }

@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using WebApi.ProductOperations.Commands.Request;
 using WebApi.ProductOperations.Handlers.CommandHandlers;
 
 namespace WebApi.ProductOperations.Handlers.Validators

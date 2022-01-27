@@ -23,9 +23,9 @@ namespace WebApi.ProductOperations.Handlers.CommandHandlers
             _baseReadRepository = baseReadRepository;
         }
 
-        public UpdateProductCommandResponse Handle(UpdateProductCommandRequest model)
+        public UpdateProductCommandResponse Handle()
         {
-            Model = model;
+           
             var product = _baseReadRepository.Get(p => p.Id == ProductId);
 
             if (product is not null)
@@ -41,10 +41,7 @@ namespace WebApi.ProductOperations.Handlers.CommandHandlers
                 {
                      Id=ProductId,
                     IsSuccess = true,
-                    ModifiedDate= product.ModifiedDate,
-                    
-                    
-                    
+                    ModifiedDate= product.ModifiedDate,                   
                 };
             }
             return new UpdateProductCommandResponse

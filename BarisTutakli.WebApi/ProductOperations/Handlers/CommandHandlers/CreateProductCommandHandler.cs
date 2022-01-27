@@ -23,9 +23,8 @@ namespace WebApi.ProductOperations.Handlers.CommandHandlers
         }
 
 
-        public CreateProductCommandResponse Handle(CreateProductCommandRequest request)
+        public CreateProductCommandResponse Handle()
         {
-            Model = request;
             var createdProductId = _createRepository.Create(new Product()
             {
                 CategoryId = Model.CategoryId,
@@ -47,38 +46,3 @@ namespace WebApi.ProductOperations.Handlers.CommandHandlers
 }
 
 
-
-
-
-//namespace WebApi.ProductOperations.Handlers.CommandHandlers
-//{
-//    public class CreateProductCommandHandler
-//    {
-
-//        private readonly ECommerceDbContext _dbcontext;
-//        public CreateProductCommandHandler(ECommerceDbContext context)
-//        {
-//            _dbcontext = context;
-
-//        }
-//        public CreateProductCommandResponse Handle(CreateProductCommandRequest createProductCommandRequest)
-//        {
-//            var product = _dbcontext.Products.SingleOrDefault(product => product.ProductName == createProductCommandRequest.ProductName);
-//            if (product is not null)
-//                throw new InvalidOperationException(Messages.AlreadyExist);
-//            _dbcontext.Products.Add(new Product()
-//            {
-//                CategoryId = createProductCommandRequest.CategoryId,
-//                ProductName = createProductCommandRequest.ProductName,
-//                PublishDate = createProductCommandRequest.PublishDate,
-//                CreatedDate = DateTime.Now
-//            });
-//            _dbcontext.SaveChanges();
-
-//            return new CreateProductCommandResponse
-//            {
-//                IsSuccess = true,
-//            };
-//        }
-//    }
-//}

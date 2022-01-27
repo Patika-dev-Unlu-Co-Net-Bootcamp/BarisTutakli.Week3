@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApi.Common.Base.Concrete;
+using WebApi.ProductOperations;
 using WebApi.ProductOperations.Handlers.CommandHandlers;
 using WebApi.ProductOperations.Handlers.QueryHandlers;
 
@@ -30,6 +31,9 @@ namespace WebApi.Services
 
             services.AddScoped<BaseUpdateRepository<Product, ECommerceDbContext>>();
             services.AddScoped<UpdateProductCommandHandler>();
+
+          
+       
         }
     }
 }

@@ -7,7 +7,7 @@ using WebApi.ProductOperations.Commands.Response;
 
 namespace WebApi.ProductOperations.Commands.Request
 {
-    public class DeleteProductCommandRequest: IRequest<DeleteProductCommandResponse>
+    public class DeleteProductCommandRequest
     {
         public int Id { get; set; }
     }

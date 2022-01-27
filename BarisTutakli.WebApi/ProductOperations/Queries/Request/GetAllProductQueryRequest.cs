@@ -7,7 +7,7 @@ using WebApi.ProductOperations.Queries.Response;
 
 namespace WebApi.ProductOperations.Queries.Request
 {
-    public class GetAllProductQueryRequest : IRequest<List<GetAllProductQueryResponse>>
+    public class GetAllProductQueryRequest
     {
        
     }
