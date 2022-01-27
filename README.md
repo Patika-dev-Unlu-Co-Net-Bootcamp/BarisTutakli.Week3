@@ -1,5 +1,6 @@
 
-# 3. Hafta Ödev + WebApi Improvement(CQRS,Generic Repository)
+# 3. Hafta Ödev + WebApi Improvement from the week 2(CQRS,Generic Repository) + CleanArch
+Her bir bölümde yapınanlar hakkındaki açıklamaları aşağıda bulabilirsiniz.
 Veritabanı 
 1. Patikadev yapısını düşünerek bir db oluşturun
   - eğitimler, öğrenciler,katılımcılar,eğitmenler,asistanlar, eğitimde öğrencilerin yoklamalarının ve başarı durumlarının tutulduğu tablolar olacaktır.
@@ -16,10 +17,18 @@ Veritabanı
 
 <hr>
 
+## 3. Hafta Ödev
+1.  Veri tabanının tabloları oluşturuldu ve tablolar arası ilişkiler oluşturuldu. Aşağıdaki diagramdan inceleyebilirisiniz.
+![Diagram](https://github.com/Patika-dev-Unlu-Co-Net-Bootcamp/BarisTutakli.Week3/blob/main/Diagram0.png?raw=true)
+2. UpdateStudentSuccessStatusWeekly isimli Trigger oluşturuldu.
+3. SP_RegisterNewStudent adlı store proc oluşturuldu.
+4. OrderByCourseId ve ListStudentDetails adlı iki view oluşturuldu.
+<hr>
+
 ## WebApi Improvement(CQRS,Generic Repository)
 
 ### Generic Repository Pattern
-To apply gerenric repository, i created 5 interfaces and 5  implementation of these interfaces. Each class has only one responsibility. Separating classes acording to their responsibilities lets us to use them separetly.
+To apply gerenric repository, i created 5 interfaces and 5  implementation of these interfaces. Each class has only one responsibility. I created separated files because of single responsibility principle. 
 
 #### Common/Base
 ##### Common/Base/Abstract
@@ -91,5 +100,8 @@ In the directory of ProductOperations, i created following folders and classes:
         }
     }
 ```
-### Mediatr Pattern(manually)
-I extended IServiceCollection by creating a static class and static method named **CustomMediatR** in **Services** folder. I added all the other required processes using the dependency injection method in ProductController.
+### Extendent IServicesCollection
+I extended IServiceCollection by creating a static class and static in **Services** folder. I added all the other required processes using the dependency injection method in ProductController.
+
+## CleanArch Project 
+I started **CleanArch** project and created Application and API layer. 
