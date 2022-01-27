@@ -1,0 +1,17 @@
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\bin\Debug\net5.0\CleanArch.Application.deps.json
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\bin\Debug\net5.0\CleanArch.Application.dll
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\bin\Debug\net5.0\ref\CleanArch.Application.dll
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\bin\Debug\net5.0\CleanArch.Application.pdb
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\obj\Debug\net5.0\CleanArch.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\obj\Debug\net5.0\CleanArch.Application.AssemblyInfoInputs.cache
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\obj\Debug\net5.0\CleanArch.Application.AssemblyInfo.cs
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\obj\Debug\net5.0\CleanArch.Application.csproj.CoreCompileInputs.cache
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\obj\Debug\net5.0\CleanArch.Application.dll
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\obj\Debug\net5.0\ref\CleanArch.Application.dll
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\obj\Debug\net5.0\CleanArch.Application.pdb
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\bin\Debug\net5.0\CleanArch.Domain.dll
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\bin\Debug\net5.0\CleanArch.Infrastructure.dll
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\bin\Debug\net5.0\CleanArch.Domain.pdb
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\bin\Debug\net5.0\CleanArch.Infrastructure.pdb
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\obj\Debug\net5.0\CleanArch.Application.csproj.AssemblyReference.cache
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Application\obj\Debug\net5.0\CleanArch.Application.csproj.CopyComplete

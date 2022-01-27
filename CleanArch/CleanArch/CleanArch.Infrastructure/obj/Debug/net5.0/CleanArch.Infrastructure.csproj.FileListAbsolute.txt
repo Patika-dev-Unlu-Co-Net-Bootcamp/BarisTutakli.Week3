@@ -1,0 +1,15 @@
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\obj\Debug\net5.0\CleanArch.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\obj\Debug\net5.0\CleanArch.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\obj\Debug\net5.0\CleanArch.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\obj\Debug\net5.0\CleanArch.Infrastructure.AssemblyInfo.cs
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\obj\Debug\net5.0\CleanArch.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\bin\Debug\net5.0\CleanArch.Infrastructure.deps.json
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\bin\Debug\net5.0\CleanArch.Infrastructure.dll
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\bin\Debug\net5.0\ref\CleanArch.Infrastructure.dll
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\bin\Debug\net5.0\CleanArch.Infrastructure.pdb
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\bin\Debug\net5.0\CleanArch.Domain.dll
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\bin\Debug\net5.0\CleanArch.Domain.pdb
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\obj\Debug\net5.0\CleanArch.Infrastructure.csproj.CopyComplete
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\obj\Debug\net5.0\CleanArch.Infrastructure.dll
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\obj\Debug\net5.0\ref\CleanArch.Infrastructure.dll
+C:\Users\kbez1\Documents\kodlar\Bootcamp\CleanArch\CleanArch\CleanArch.Infrastructure\obj\Debug\net5.0\CleanArch.Infrastructure.pdb

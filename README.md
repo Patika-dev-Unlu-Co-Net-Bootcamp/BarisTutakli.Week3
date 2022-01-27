@@ -1,5 +1,5 @@
 
-# 3. Hafta Ödev 
+# 3. Hafta Ödev + WebApi Improvement(CQRS,Generic Repository)
 Veritabanı 
 1. Patikadev yapısını düşünerek bir db oluşturun
   - eğitimler, öğrenciler,katılımcılar,eğitmenler,asistanlar, eğitimde öğrencilerin yoklamalarının ve başarı durumlarının tutulduğu tablolar olacaktır.
@@ -16,7 +16,7 @@ Veritabanı
 
 <hr>
 
-## WebApi Improvement(CQRS,Generic Repository, MediatR)
+## WebApi Improvement(CQRS,Generic Repository)
 
 ### Generic Repository Pattern
 To apply gerenric repository, i created 5 interfaces and 5  implementation of these interfaces. Each class has only one responsibility. Separating classes acording to their responsibilities lets us to use them separetly.
