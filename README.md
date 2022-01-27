@@ -1,7 +1,7 @@
 
-# 3. Hafta Ödev + WebApi Improvement from the week 2(CQRS,Generic Repository) + CleanArch
-Her bir bölümde yapınanlar hakkındaki açıklamaları aşağıda bulabilirsiniz.
-Veritabanı 
+## 3. Hafta Ödev + Week 2 WebApi Improvement(CQRS,Generic Repository) + CleanArch
+**Her bölümde yapılan işlemler hakkındaki açıklamaları aşağıda aşama aşama bulabilirsiniz.**
+
 1. Patikadev yapısını düşünerek bir db oluşturun
   - eğitimler, öğrenciler,katılımcılar,eğitmenler,asistanlar, eğitimde öğrencilerin yoklamalarının ve başarı durumlarının tutulduğu tablolar olacaktır.
   - veritipleri ve ilişkiler belirtilmelidir.
@@ -23,6 +23,7 @@ Veritabanı
 2. UpdateStudentSuccessStatusWeekly isimli Trigger oluşturuldu.
 3. SP_RegisterNewStudent adlı store proc oluşturuldu.
 4. OrderByCourseId ve ListStudentDetails adlı iki view oluşturuldu.
+5. Backup dosyası yüklendi.
 <hr>
 
 ## WebApi Improvement(CQRS,Generic Repository)
@@ -31,7 +32,6 @@ Veritabanı
 To apply gerenric repository, i created 5 interfaces and 5  implementation of these interfaces. Each class has only one responsibility. I created separated files because of single responsibility principle. 
 
 #### Common/Base
-##### Common/Base/Abstract
 These are generic interfaces:
 * IRead
 * ICreate
@@ -102,6 +102,29 @@ In the directory of ProductOperations, i created following folders and classes:
 ```
 ### Extendent IServicesCollection
 I extended IServiceCollection by creating a static class and static in **Services** folder. I added all the other required processes using the dependency injection method in ProductController.
+```c#
+public static void AddServices(this IServiceCollection services)
+    {
+
+        services.AddScoped<BaseReadAllRepository<Product, ECommerceDbContext>>();
+        services.AddScoped<GetProductsQueryHandler>();
+
+        services.AddScoped<BaseReadRepository<Product, ECommerceDbContext>>();
+        services.AddScoped<GetProductDetailQueryHandler>();
+
+        services.AddScoped<BaseCreateRepository<Product, ECommerceDbContext>>();
+        services.AddScoped<CreateProductCommandHandler>();
+
+        services.AddScoped<BaseDeleteRepository<Product, ECommerceDbContext>>();
+        services.AddScoped<DeleteProductCommandHandler>();
+
+        services.AddScoped<BaseUpdateRepository<Product, ECommerceDbContext>>();
+        services.AddScoped<UpdateProductCommandHandler>();
+
+        
+}
+```
+
 
 ## CleanArch Project 
 I started **CleanArch** project and created Application and API layer. 
