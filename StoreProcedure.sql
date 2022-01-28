@@ -10,8 +10,10 @@
 	
 	--declare @check bit;
 	--declare @AlreadyRegistered int;
+	--declare @Duration tinyint;
+	--select @Duration= Duration from Courses where CourseId=@CourseId;
 	--select @AlreadyRegistered = CourseId from CourseStudents
-	--where InscriptionDate = @InscriptionDate and StudentId=@StudentId;
+	--where InscriptionDate > @InscriptionDate and InscriptionDate<DATEADD(week,@Duration,@InscriptionDate) and StudentId=@StudentId;
 	--if(@AlreadyRegistered>0)
 	--	begin
 	--		raiserror('Already registered an other course',1,1);
@@ -31,8 +33,10 @@ alter proc SP_RegisterNewStudent(@StudentId int,@CourseId int ,@InscriptionDate 
 	
 	declare @check bit;
 	declare @AlreadyRegistered int;
+	declare @Duration tinyint;
+	select @Duration= Duration from Courses where CourseId=@CourseId;
 	select @AlreadyRegistered = CourseId from CourseStudents
-	where InscriptionDate = @InscriptionDate and StudentId=@StudentId;
+	where InscriptionDate > @InscriptionDate and InscriptionDate<DATEADD(week,@Duration,@InscriptionDate) and StudentId=@StudentId;
 	if(@AlreadyRegistered>0)
 		begin
 			raiserror('Already registered an other course',1,1);
